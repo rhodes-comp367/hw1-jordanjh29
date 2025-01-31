@@ -19,21 +19,30 @@ isuc (- (suc n)) = - n
 
 -- given i, return i - 1.
 ipred : Int → Int
-ipred = ?
+ipred  (+(suc n)) = + n -- for n increase?
+ipred  (+ zero) = - zero -- for cases where +/- zero
+ipred  (- zero) = - (suc zero) -- defines -zero
+
 
 -- given i, return -i.
 ineg : Int → Int
-ineg = ?
+ineg (- n) = + n
+ineg (+ n) = - n
 
 -- given i & j, return i + j.
 iplus : Int → Int → Int
-iplus = ?
+iplus (+ n) (+ m) = + (n + m) -- for positive ints
+iplus (- n) (- m) = - (n + m) -- for negative ints
+iplus (+ (suc m)) (-n) = - n 
 
 -- given i & j, return i - j.
 iminus : Int → Int → Int
-iminus = ?
+iminus i j = iplus i (ineg j) -- negation for subtraction
 
 -- given i & j, return i * j.
 itimes : Int → Int → Int
-itimes = ?
+itimes (+ m) (+ n) = + (m * n) -- for positive ints
+itimes (- m) (- n) = + (m * n) -- for negative ints
+itimes (+ m) (- n) = - (m * n) -- for negative ints
+itimes (- m) (+ n) = - (m * n) -- for negative ints
 
